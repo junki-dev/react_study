@@ -61,6 +61,16 @@ Html 대응
         2. state가 변경되면, HTML이 자동으로 재렌더링이 됨.
     + 자주 바뀌고 중요한 데이터는 State로 만듦
 
+# 4일차
+
++ eslint : 문법검사
+    + 사용하지 않을 경우 최상단에 **/* eslint-disable */** 넣기
+
++ span 에 이벤트 등록은 onClie={함수()} 로 가능하다.
+
++ state 변경은 state 변경 함수를 사용해야함.
+    + ex) <span onClick={()=>{state변경(state + 1)}}
+    + state 전체를 변경 시킴
 
 # Getting Started with Create React App
 
