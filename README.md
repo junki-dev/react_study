@@ -43,7 +43,10 @@ Html 대응
 + class 대신 className 사용
 
 + 데이터 바인딩이 쉬워짐 -> 리엑트 최대 장점
+
 ### ₩ { 변수, 함수 등 } ₩
++ style 넣기
+### ₩stype={object 자료형으로 만든 스타일}₩
 
 # 3일차 강의
 
@@ -71,6 +74,7 @@ Html 대응
 + state 변경은 state 변경 함수를 사용해야함.
     + ex) <span onClick={()=>{state변경(state + 1)}}
     + state 전체를 변경 시킴
+
 
 # Getting Started with Create React App
 
