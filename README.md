@@ -1,5 +1,5 @@
 # React Study
-# **코딩애플** 유튜브 강의를  완전 기초를 간략하게 공부함
+# **코딩애플** 유튜브 강의를 통해 React 기초 개념을 공부함
 
 # Why Web-app ?
 
@@ -111,6 +111,8 @@ ex) data[0] = 1 (X)
 
         + state 사용할 경우 복잡해짐 (props 사용해야 함.)
 
+
+# npx 로 프로젝트 생성 시, 출력되는 README
 
 # Getting Started with Create React App
 
