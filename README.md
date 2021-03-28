@@ -1,3 +1,41 @@
+# React Study
+# "코딩애플" 유튜브 강의를 통해 공부함
+
+# Why Web-app ?
+
+1. 모바일앱으로 발행이 쉬움
+
+2. 앱처럼 뛰어난 UX
+
+3. 그냥 웹사이트보다 비즈니스적 감점
+
+# 설치 / 셋팅
+
+1. 런타임 
+    + Nodejs 설치 : v14.16.0(lts)
+
+2. 에디터
+    + vs code
+
+3. react 프로젝트 생성
+    + npx create-react-app blog
+
+# 프로젝트 실행
+
+## `npm start`
+
+# 프로젝트 설명
+
++ App.js : 메인페이지에 들어갈 HTML 코드
+
++ public/index.html : 메인페이지
+
+*App.js -src/index.js-> index.html*
+
++ public : static 파일 보관함
+
++ src : 소스코드 보관함
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
