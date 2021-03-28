@@ -45,6 +45,23 @@ Html 대응
 + 데이터 바인딩이 쉬워짐 -> 리엑트 최대 장점
 ### ₩ { 변수, 함수 등 } ₩
 
+# 3일차 강의
+
++ 데이터는 1.변수에 넣거나 2. state에 넣음
+
+    + state 만드는법
+        1. {ustState} 상단에 첨부
+        2. useState(데이터)
+    + state
+        1. 변수 대신 쓰는 데이터 저장공간
+        2. useState()를 이용해 만듦
+        3. 문자, 숫자, arraym object 다 가능함
+    + state 사용 이유.
+        1. web이 App처럼 동작하게 만들고 싶기때문
+        2. state가 변경되면, HTML이 자동으로 재렌더링이 됨.
+    + 자주 바뀌고 중요한 데이터는 State로 만듦
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
