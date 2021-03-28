@@ -72,6 +72,14 @@ Html 대응
     + ex) <span onClick={()=>{state변경(state + 1)}}
     + state 전체를 변경 시킴
 
+# 5일차
+
++ state, object 복사 > deep copy
+### ₩var newArray = [...복사할값]₩
+
++ state는 직접 변경하는 것은 권장하지 않음
+ex) data[0] = 1 (X)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
