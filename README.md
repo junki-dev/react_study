@@ -43,7 +43,10 @@ Html 대응
 + class 대신 className 사용
 
 + 데이터 바인딩이 쉬워짐 -> 리엑트 최대 장점
+
 ### ₩ { 변수, 함수 등 } ₩
++ style 넣기
+### ₩stype={object 자료형으로 만든 스타일}₩
 
 # 3일차 강의
 
@@ -60,7 +63,6 @@ Html 대응
         1. web이 App처럼 동작하게 만들고 싶기때문
         2. state가 변경되면, HTML이 자동으로 재렌더링이 됨.
     + 자주 바뀌고 중요한 데이터는 State로 만듦
-
 
 # Getting Started with Create React App
 
