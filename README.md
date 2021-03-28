@@ -1,5 +1,5 @@
 # React Study
-# **코딩애플** 유튜브 강의를 통해 공부함
+# **코딩애플** 유튜브 강의를  완전 기초를 간략하게 공부함
 
 # Why Web-app ?
 
@@ -75,6 +75,13 @@ Html 대응
     + ex) <span onClick={()=>{state변경(state + 1)}}
     + state 전체를 변경 시킴
 
+# 5일차
+
++ state, object 복사 > deep copy
+### ₩var newArray = [...복사할값]₩
+
++ state는 직접 변경하는 것은 권장하지 않음
+ex) data[0] = 1 (X)
 
 # Getting Started with Create React App
 

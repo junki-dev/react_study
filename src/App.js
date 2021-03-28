@@ -12,7 +12,9 @@ function App() {
   let posts = '영등포 맛집';
 
   function changeTitle() {
-    글제목변경(['바지추천', '고기 맛집', '초밥 맛집']);
+    var newArray = [...글제목];
+    newArray[0] = '바지추천'
+    글제목변경(newArray);
   }
 
   return (
