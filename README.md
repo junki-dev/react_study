@@ -1,5 +1,5 @@
 # React Study
-# "코딩애플" 유튜브 강의를 통해 공부함
+# **코딩애플** 유튜브 강의를 통해 공부함
 
 # Why Web-app ?
 
@@ -30,11 +30,20 @@
 
 + public/index.html : 메인페이지
 
-*App.js -src/index.js-> index.html*
++ *App.js -src/index.js-> index.html*
 
 + public : static 파일 보관함
 
 + src : 소스코드 보관함
+
+# JSX
+
+Html 대응
+
++ class 대신 className 사용
+
++ 데이터 바인딩이 쉬워짐 -> 리엑트 최대 장점
+### ₩ { 변수, 함수 등 } ₩
 
 # Getting Started with Create React App
 
