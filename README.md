@@ -45,6 +45,9 @@ Html 대응
 + 데이터 바인딩이 쉬워짐 -> 리엑트 최대 장점
 ### ₩ { 변수, 함수 등 } ₩
 
++ style 넣기
+### ₩stype={object 자료형으로 만든 스타일}₩
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
