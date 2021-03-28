@@ -80,6 +80,35 @@ Html 대응
 + state는 직접 변경하는 것은 권장하지 않음
 ex) data[0] = 1 (X)
 
+# 6일차
+
++ App.js 내 return() 내 <div>가 여러개일 수 없음 > 하나의 html 태그만 사용 가능
+
++ htmp이 많이 생길경우, component를 사용함
+    
+    + Component 만드는 순서
+
+        1. 함수 만들고 이름 짓기
+        2. 축약을 원하는 html 넣기
+        3. 원하는 곳에서 <함수명/>
+
+    + 주의점
+
+        1. 이름은 대문자로 시작
+        2. return 소괄호 안에, html태그는 하나만 사용 가능 혹은 flagment 사용(<></>)
+        3. function App 과 동일 레벨에 만듦
+
+    + Component 만드는 기준
+
+        1. 반복춣현하는 html 덩어리
+        2. 자주 변경되는 html ui들
+        3. 다른 페이지 만들 때도 컴포넌트로 만듦
+    
+    + Component 단점
+
+        + state 사용할 경우 복잡해짐 (props 사용해야 함.)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
