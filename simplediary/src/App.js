@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
@@ -37,8 +44,43 @@ import OptimizeTest from "./OptimizeTest";
 
 // https://jsonplaceholder.typicode.com/comments
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      const created_date = new Date().getTime();
+      const newItem = {
+        ...action.data,
+        created_date,
+      };
+      return [newItem, ...state];
+    }
+    case "REMOVE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
+    case "EDIT": {
+      return state.map((it) =>
+        it.id === action.targetId ? { ...it, content: action.newContent } : it
+      );
+    }
+    default:
+      return state;
+  }
+};
+
+export const DiaryStateContext = React.createContext();
+
+/**
+ * 중첩 Context를 함으로써 dispatch 함수를 위한 context를 따로 생성해줘야 한다.
+ * 그렇지 않으면, 리렌더링 되어 최적화가 풀린다.
+ */
+export const DiaryDispatchContext = React.createContext();
+
 function App() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
 
@@ -57,41 +99,56 @@ function App() {
       };
     });
 
-    setData(initData);
+    // setData(initData);
+    dispatch({ type: "INIT", data: initData });
   };
 
   const onCreate = useCallback((author, content, emotion) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current,
-    };
+    dispatch({
+      type: "CREATE",
+      data: { author, content, emotion, id: dataId.current },
+    });
+
+    // const created_date = new Date().getTime();
+    // const newItem = {
+    //   author,
+    //   content,
+    //   emotion,
+    //   created_date,
+    //   id: dataId.current,
+    // };
 
     dataId.current += 1;
     // 함수형 업데이트
     // 최신의 데이터를 받아와 처리하기 때문에 useCallback의 depth를 비워둘 수 있다.
-    setData((data) => [newItem, ...data]);
+    // setData((data) => [newItem, ...data]);
   }, []);
 
   const onRemove = useCallback((targetId) => {
+    dispatch({ type: "REMOVE", targetId });
     // console.log(`${targetId}가 삭제되었습니다.`);
     // const newDiaryList = data.filter((it) => it.id !== targetId);
-    setData((data) => data.filter((it) => it.id !== targetId));
+    // setData((data) => data.filter((it) => it.id !== targetId));
   }, []);
 
   const onEdit = useCallback((targetId, newContent) => {
-    setData((data) =>
-      data.map((it) =>
-        it.id === targetId ? { ...it, content: newContent } : it
-      )
-    );
+    dispatch({ type: "EDIT", targetId, newContent });
+    // setData((data) =>
+    //   data.map((it) =>
+    //     it.id === targetId ? { ...it, content: newContent } : it
+    //   )
+    // );
   }, []);
 
   useEffect(() => {
     getData();
+  }, []);
+
+  /**
+   * useMemo를 사용하는 이유는 재생성 되지 않게 하기 위함이다.
+   * */
+  const memoizedDispatches = useMemo(() => {
+    return { onCreate, onRemove, onEdit };
   }, []);
 
   /* 메모이제이션 기법 사용
@@ -111,16 +168,20 @@ function App() {
   const { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
   return (
-    <div className="App">
-      {/* <Lifecycle /> */}
-      {/* <OptimizeTest /> */}
-      <DiaryEditor onCreate={onCreate} />
-      <div>전체 일기: {data.length}</div>
-      <div>기분 좋은 일기 개수: {goodCount}</div>
-      <div>기분 나쁜 일기 개수: {badCount}</div>
-      <div>기분 좋은 일기 비율: {goodRatio}</div>
-      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={memoizedDispatches}>
+        <div className="App">
+          {/* <Lifecycle /> */}
+          {/* <OptimizeTest /> */}
+          <DiaryEditor />
+          <div>전체 일기: {data.length}</div>
+          <div>기분 좋은 일기 개수: {goodCount}</div>
+          <div>기분 나쁜 일기 개수: {badCount}</div>
+          <div>기분 좋은 일기 비율: {goodRatio}</div>
+          <DiaryList />
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 }
 
